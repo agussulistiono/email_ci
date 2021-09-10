@@ -1,0 +1,356 @@
+[33mcommit ae2cfbb874145b679aa088507dfb624f7f13b335[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: gusmakreatif <agussulistiono0@gmail.com>
+Date:   Thu Sep 9 00:36:45 2021 +0700
+
+    first commit
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex e0f435c..c926a28 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1 +1,3 @@[m
+[31m-# email_ci[m
+\ No newline at end of file[m
+[32m+[m[32m# email_ci[m
+[32m+[m
+[32m+[m[32m#ini adalah contoh email ci[m
+[1mdiff --git a/application/.htaccess b/application/.htaccess[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6c63ed4[m
+[1m--- /dev/null[m
+[1m+++ b/application/.htaccess[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<IfModule authz_core_module>[m
+[32m+[m[32m    Require all denied[m
+[32m+[m[32m</IfModule>[m
+[32m+[m[32m<IfModule !authz_core_module>[m
+[32m+[m[32m    Deny from all[m
+[32m+[m[32m</IfModule>[m
+\ No newline at end of file[m
+[1mdiff --git a/application/cache/.htaccess b/application/cache/.htaccess[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6c63ed4[m
+[1m--- /dev/null[m
+[1m+++ b/application/cache/.htaccess[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<IfModule authz_core_module>[m
+[32m+[m[32m    Require all denied[m
+[32m+[m[32m</IfModule>[m
+[32m+[m[32m<IfModule !authz_core_module>[m
+[32m+[m[32m    Deny from all[m
+[32m+[m[32m</IfModule>[m
+\ No newline at end of file[m
+[1mdiff --git a/application/cache/index.html b/application/cache/index.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b702fbc[m
+[1m--- /dev/null[m
+[1m+++ b/application/cache/index.html[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32m<!DOCTYPE html>[m
+[32m+[m[32m<html>[m
+[32m+[m[32m<head>[m
+[32m+[m	[32m<title>403 Forbidden</title>[m
+[32m+[m[32m</head>[m
+[32m+[m[32m<body>[m
+[32m+[m
+[32m+[m[32m<p>Directory access is forbidden.</p>[m
+[32m+[m
+[32m+[m[32m</body>[m
+[32m+[m[32m</html>[m
+[1mdiff --git a/application/config/autoload.php b/application/config/autoload.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7079610[m
+[1m--- /dev/null[m
+[1m+++ b/application/config/autoload.php[m
+[36m@@ -0,0 +1,135 @@[m
+[32m+[m[32m<?php[m
+[32m+[m[32mdefined('BASEPATH') OR exit('No direct script access allowed');[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| AUTO-LOADER[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| This file specifies which systems should be loaded by default.[m
+[32m+[m[32m|[m
+[32m+[m[32m| In order to keep the framework as light-weight as possible only the[m
+[32m+[m[32m| absolute minimal resources are loaded by default. For example,[m
+[32m+[m[32m| the database is not connected to automatically since no assumption[m
+[32m+[m[32m| is made regarding whether you intend to use it.  This file lets[m
+[32m+[m[32m| you globally define which systems you would like loaded with every[m
+[32m+[m[32m| request.[m
+[32m+[m[32m|[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Instructions[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| These are the things you can load automatically:[m
+[32m+[m[32m|[m
+[32m+[m[32m| 1. Packages[m
+[32m+[m[32m| 2. Libraries[m
+[32m+[m[32m| 3. Drivers[m
+[32m+[m[32m| 4. Helper files[m
+[32m+[m[32m| 5. Custom config files[m
+[32m+[m[32m| 6. Language files[m
+[32m+[m[32m| 7. Models[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Packages[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['packages'] = array();[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Libraries[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| These are the classes located in system/libraries/ or your[m
+[32m+[m[32m| application/libraries/ directory, with the addition of the[m
+[32m+[m[32m| 'database' library, which is somewhat of a special case.[m
+[32m+[m[32m|[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['libraries'] = array('database', 'email', 'session');[m
+[32m+[m[32m|[m
+[32m+[m[32m| You can also supply an alternative library name to be assigned[m
+[32m+[m[32m| in the controller:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['libraries'] = array('user_agent' => 'ua');[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['libraries'] = array();[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Drivers[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| These classes are located in system/libraries/ or in your[m
+[32m+[m[32m| application/libraries/ directory, but are also placed inside their[m
+[32m+[m[32m| own subdirectory and they extend the CI_Driver_Library class. They[m
+[32m+[m[32m| offer multiple interchangeable driver options.[m
+[32m+[m[32m|[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['drivers'] = array('cache');[m
+[32m+[m[32m|[m
+[32m+[m[32m| You can also supply an alternative property name to be assigned in[m
+[32m+[m[32m| the controller:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['drivers'] = array('cache' => 'cch');[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['drivers'] = array();[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Helper Files[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['helper'] = array('url', 'file');[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['helper'] = array('url', 'form');[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Config files[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['config'] = array('config1', 'config2');[m
+[32m+[m[32m|[m
+[32m+[m[32m| NOTE: This item is intended for use ONLY if you have created custom[m
+[32m+[m[32m| config files.  Otherwise, leave it blank.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['config'] = array();[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Language files[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['language'] = array('lang1', 'lang2');[m
+[32m+[m[32m|[m
+[32m+[m[32m| NOTE: Do not include the "_lang" part of your file.  For example[m
+[32m+[m[32m| "codeigniter_lang.php" would be referenced as array('codeigniter');[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['language'] = array();[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m|  Auto-load Models[m
+[32m+[m[32m| -------------------------------------------------------------------[m
+[32m+[m[32m| Prototype:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['model'] = array('first_model', 'second_model');[m
+[32m+[m[32m|[m
+[32m+[m[32m| You can also supply an alternative model name to be assigned[m
+[32m+[m[32m| in the controller:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$autoload['model'] = array('first_model' => 'first');[m
+[32m+[m[32m*/[m
+[32m+[m[32m$autoload['model'] = array();[m
+[1mdiff --git a/application/config/config.php b/application/config/config.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8e4763d[m
+[1m--- /dev/null[m
+[1m+++ b/application/config/config.php[m
+[36m@@ -0,0 +1,523 @@[m
+[32m+[m[32m<?php[m
+[32m+[m[32mdefined('BASEPATH') OR exit('No direct script access allowed');[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Base Site URL[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| URL to your CodeIgniter root. Typically this will be your base URL,[m
+[32m+[m[32m| WITH a trailing slash:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	http://example.com/[m
+[32m+[m[32m|[m
+[32m+[m[32m| WARNING: You MUST set this value![m
+[32m+[m[32m|[m
+[32m+[m[32m| If it is not set, then CodeIgniter will try guess the protocol and path[m
+[32m+[m[32m| your installation, but due to security concerns the hostname will be set[m
+[32m+[m[32m| to $_SERVER['SERVER_ADDR'] if available, or localhost otherwise.[m
+[32m+[m[32m| The auto-detection mechanism exists only for convenience during[m
+[32m+[m[32m| development and MUST NOT be used in production![m
+[32m+[m[32m|[m
+[32m+[m[32m| If you need to allow multiple domains, remember that this file is still[m
+[32m+[m[32m| a PHP script and you can easily do that on your own.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['base_url'] = 'http://localhost/email_ci/';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Index File[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| Typically this will be your index.php file, unless you've renamed it to[m
+[32m+[m[32m| something else. If you are using mod_rewrite to remove the page set this[m
+[32m+[m[32m| variable so that it is blank.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['index_page'] = 'index.php';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| URI PROTOCOL[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This item determines which server global should be used to retrieve the[m
+[32m+[m[32m| URI string.  The default setting of 'REQUEST_URI' works for most servers.[m
+[32m+[m[32m| If your links do not seem to work, try one of the other delicious flavors:[m
+[32m+[m[32m|[m
+[32m+[m[32m| 'REQUEST_URI'    Uses $_SERVER['REQUEST_URI'][m
+[32m+[m[32m| 'QUERY_STRING'   Uses $_SERVER['QUERY_STRING'][m
+[32m+[m[32m| 'PATH_INFO'      Uses $_SERVER['PATH_INFO'][m
+[32m+[m[32m|[m
+[32m+[m[32m| WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded![m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['uri_protocol']	= 'REQUEST_URI';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| URL suffix[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This option allows you to add a suffix to all URLs generated by CodeIgniter.[m
+[32m+[m[32m| For more information please see the user guide:[m
+[32m+[m[32m|[m
+[32m+[m[32m| https://codeigniter.com/user_guide/general/urls.html[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['url_suffix'] = '';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Default Language[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This determines which set of language files should be used. Make sure[m
+[32m+[m[32m| there is an available translation if you intend to use something other[m
+[32m+[m[32m| than english.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['language']	= 'english';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Default Character Set[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This determines which character set is used by default in various methods[m
+[32m+[m[32m| that require a character set to be provided.[m
+[32m+[m[32m|[m
+[32m+[m[32m| See http://php.net/htmlspecialchars for a list of supported charsets.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['charset'] = 'UTF-8';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Enable/Disable System Hooks[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| If you would like to use the 'hooks' feature you must enable it by[m
+[32m+[m[32m| setting this variable to TRUE (boolean).  See the user guide for details.[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['enable_hooks'] = FALSE;[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Class Extension Prefix[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This item allows you to set the filename/classname prefix when extending[m
+[32m+[m[32m| native libraries.  For more information please see the user guide:[m
+[32m+[m[32m|[m
+[32m+[m[32m| https://codeigniter.com/user_guide/general/core_classes.html[m
+[32m+[m[32m| https://codeigniter.com/user_guide/general/creating_libraries.html[m
+[32m+[m[32m|[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['subclass_prefix'] = 'MY_';[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Composer auto-loading[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| Enabling this setting will tell CodeIgniter to look for a Composer[m
+[32m+[m[32m| package auto-loader script in application/vendor/autoload.php.[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$config['composer_autoload'] = TRUE;[m
+[32m+[m[32m|[m
+[32m+[m[32m| Or if you have your vendor/ directory located somewhere else, you[m
+[32m+[m[32m| can opt to set a specific path as well:[m
+[32m+[m[32m|[m
+[32m+[m[32m|	$config['composer_autoload'] = '/path/to/vendor/autoload.php';[m
+[32m+[m[32m|[m
+[32m+[m[32m| For more information about Composer, please visit http://getcomposer.org/[m
+[32m+[m[32m|[m
+[32m+[m[32m| Note: This will NOT disable or override the CodeIgniter-specific[m
+[32m+[m[32m|	autoloading (application/config/autoload.php)[m
+[32m+[m[32m*/[m
+[32m+[m[32m$config['composer_autoload'] = FALSE;[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m| Allowed URL Characters[m
+[32m+[m[32m|--------------------------------------------------------------------------[m
+[32m+[m[32m|[m
+[32m+[m[32m| This lets you specify which characters are permitted within your URLs.[m
+[32m+[m[32m| When someone tries to submit a URL with disallowed characters they will[m
+[32m+[m[32m| get a warning message.[m
+[32m+[m[32m|[m
+[32m+[m[32m| As a security measure you are STRONGLY encouraged to r
